@@ -1,0 +1,172 @@
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('../../../shared/assets/fonts/fontawesome-webfont.ttf') format('truetype');
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: sans-serif, 'FontAwesome';
+}
+
+.container-login-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    background-color:  #252834;
+    height: 100vh;
+}
+
+.wrapper-form{
+    flex: 0 0 400px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    
+    background-color: #fff;
+    box-shadow: 0px 0px 20px 2px #000000;
+    
+    height: 55%;
+    border-radius: 20px;
+    padding: 40px 10px;
+}
+
+/* / Image  */
+
+.logo-form {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    /* position: relative;
+    top: -90px; */
+    flex: 0.1;
+}
+
+.logo-form img {
+    width: 70%;    
+    filter: brightness(0%);   /*Make image black */  
+}
+
+/* Image /  */
+
+.desc {
+    flex: 0.8;
+
+    align-self: start;
+    margin-left: 15%;
+}
+
+.desc p span{
+    color: rgb(55, 55, 104);
+
+}
+
+.form-login{
+    flex: 2;
+
+    display: flex; 
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.usuario-div{
+    margin-bottom: 20px;
+}
+
+.usuario-div input{
+    margin-top: 10px;
+    height: 40px;
+    border: 0;
+    width: 260px;
+    background-color: rgb(226, 226, 226);
+    padding-left: 9px;
+    box-shadow: 2px 5px 5px 1px #a3a3a3;
+    
+}
+
+
+.senha-div input{
+    margin-top: 10px;
+    height: 40px;
+    width: 260px;
+    border: 0;
+
+    background-color: rgb(226, 226, 226);
+    padding-left: 9px;
+    box-shadow: 2px 5px 5px 1px #a3a3a3;
+}
+
+
+.button-login-form{
+    flex: 0.7;
+    width: 60%;
+    height: 20%;
+
+    border: 0;
+    border-radius: 10px;
+
+    box-shadow: 0px 0px 5px 2px #cfcfcf;
+
+    background-color: #252834;
+    color: #fff;
+
+}
+
+.button-login-form:hover{
+    background-color: #393d4e;
+    color: #fff;
+}
+
+
+/* Mobile  */
+@media all and (max-width: 767px){
+    .wrapper-form{
+        flex: 0 0 300px;
+        height: 70%;
+        padding: 20px 10px;
+    }
+
+    .usuario-div{
+        margin-bottom: 20px;
+    }
+
+    .desc {
+        margin-left: 5%;
+    }
+
+    
+
+    .button-login-form{
+        height: 50px;
+    }
+
+    
+}
+
+/* Tablet  */
+@media all and (min-width: 768px) and (max-width: 880px){
+    .wrapper-form{
+        flex: 0 0 400px;
+        height: 55%;
+        padding: 20px 10px;
+    }
+
+    .desc {
+        flex: 0.8;
+    
+        align-self: start;
+        
+    }
+
+
+    
+}
