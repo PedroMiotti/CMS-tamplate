@@ -4,6 +4,9 @@ import React from 'react';
 // React-Router
 import {  BrowserRouter as Router } from 'react-router-dom'
 
+// History
+import history from './helpers/history'
+
 
 // Router 
 import Routes from './router'
@@ -11,7 +14,7 @@ import Routes from './router'
 const App = () => {
   return (
     
-    <Router>
+    <Router history={history}>
       <Routes />
     </Router>
     

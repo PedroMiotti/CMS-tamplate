@@ -4,6 +4,10 @@ import React, { useState } from 'react'
 // Styles
 import './style/topbar.css'
 
+// Redux
+import { useDispatch, useSelector } from 'react-redux'
+import { LOGOUT } from '../../../../store/_auth/auth'
+
 // Material UI
 import { makeStyles } from '@material-ui/core/styles';
 import { Avatar, Popover, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
@@ -18,10 +22,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
 const Topbar = ({parentCb}) => {
 
     const classes = useStyles();
+
+    const dispatch = useDispatch();
 
     const [open, setOpen] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
@@ -40,6 +45,11 @@ const Topbar = ({parentCb}) => {
       const toggleSideBar = () => {
           setPushHamburguer(!pushHamburguer)
           parentCb(!pushHamburguer)
+      }
+
+      const logoutUser = () => {
+            dispatch(LOGOUT())
+            
       }
 
       const id = open ? 'simple-popover' : undefined;
@@ -85,7 +95,7 @@ const Topbar = ({parentCb}) => {
                                 <ListItemText primary="Perfil" />
                             </ListItem>
 
-                            <ListItem button>
+                            <ListItem button onClick={logoutUser}>
 
                                 <ListItemIcon>
                                     <ExitToApp />
