@@ -28,6 +28,9 @@ const Topbar = ({parentCb}) => {
 
     const dispatch = useDispatch();
 
+    const userInfo = useSelector(state => state.authenticate.auth.user);
+    let firstLetter = userInfo.nome[0].toUpperCase()
+    
     const [open, setOpen] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
     const [ pushHamburguer, setPushHamburguer] = useState(true);
@@ -66,7 +69,7 @@ const Topbar = ({parentCb}) => {
             <div className="avatar-div">
                 <button onClick={handleClick} style={{border: 'none', backgroundColor: 'white'}}>
 
-                    <Avatar className={classes.avatarColor}>PM</Avatar>
+                    <Avatar className={classes.avatarColor}>{firstLetter}</Avatar>
 
                 </button>
             

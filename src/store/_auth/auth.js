@@ -7,8 +7,12 @@ import { apiCallBegan } from '../api'
 // Helper
 import history from '../../helpers/history'
 
+// JWT
+const jwtDecode = require('jwt-decode');
+
 const hasToken = localStorage.getItem('jwt')
 
+let userInfo = jwtDecode(hasToken);
 
 const slice = createSlice({
     name: "auth",
@@ -16,7 +20,7 @@ const slice = createSlice({
         isLoggedIn: hasToken ? true : false,
         loading: false,
         error: false,
-        user: {}, 
+        user: hasToken ? userInfo.u : {}, 
     },
     reducers: {
         LOGIN_REQUESTED: (auth, action) => {

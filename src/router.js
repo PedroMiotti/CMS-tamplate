@@ -23,7 +23,7 @@ const Routes = () => {
 
     return(
         
-        <div>
+        <div >
             {auth && <Navbar />}
                  
             <Switch >
