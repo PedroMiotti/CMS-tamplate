@@ -2,14 +2,18 @@
     box-sizing: border-box;
 }
 
-
+.container-dash{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
 
 
 /* Desktop  */
-@media (min-width: 1100px) {
+/* @media (min-width: 1100px) {
     .container-dash{
         margin-left: 280px;
         margin-top: 50px;
     }
 
-}
+} */

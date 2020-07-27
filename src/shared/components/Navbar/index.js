@@ -11,8 +11,8 @@ import Topbar from './components/Topbar'
 
 const Navbar = () => {
 
-    // State
-    const [ toggleSide, setToggleSide ] = useState(true);
+     // State
+     const [ toggleSide, setToggleSide ] = useState(true);
 
     const toggleSidebar = (state) => {
         setToggleSide(state)
@@ -28,8 +28,6 @@ const Navbar = () => {
         </div>
             
             
-            
-        
     )
 }
 

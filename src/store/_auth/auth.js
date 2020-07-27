@@ -10,9 +10,13 @@ import history from '../../helpers/history'
 // JWT
 const jwtDecode = require('jwt-decode');
 
-const hasToken = localStorage.getItem('jwt')
 
-let userInfo = jwtDecode(hasToken);
+
+const hasToken = localStorage.getItem('jwt');
+
+let userInfo;
+
+if(hasToken) userInfo = jwtDecode(hasToken);
 
 const slice = createSlice({
     name: "auth",

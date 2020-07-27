@@ -52,7 +52,7 @@ const Topbar = ({parentCb}) => {
 
       const logoutUser = () => {
             dispatch(LOGOUT())
-            
+             
       }
 
       const id = open ? 'simple-popover' : undefined;
@@ -60,7 +60,7 @@ const Topbar = ({parentCb}) => {
     return(
         <div className="container-top">
 
-            <div className="hambuguer" style={pushHamburguer ? {marginLeft: '210px'} : {marginLeft: '20px'}}>
+            <div className="hambuguer" style={pushHamburguer ? {marginLeft: '260px'} : {marginLeft: '20px'}}>
                 <button onClick={toggleSideBar} style={{border: 'none', backgroundColor: 'white'}}>
                         <Menu />
                 </button>
