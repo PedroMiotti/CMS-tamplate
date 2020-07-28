@@ -16,6 +16,9 @@ import { List, ListItem, ListItemText, ListItemIcon, Collapse, Divider } from '@
 //Icons
 import { ExpandLess, ExpandMore, PersonOutline, Dashboard, Add, ListAlt } from '@material-ui/icons'
 
+// Redux
+import { useSelector } from 'react-redux'
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -34,18 +37,15 @@ const useStyles = makeStyles((theme) => ({
 
   }));
 
-const Sidebar = ({ toggle }) => {
+const Sidebar = () => {
 
     const classes = useStyles();
+
+    const sidebarOpen = useSelector(state => state.ui.sidenav.isOpen);
     
     const [open, setOpen] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(1);
-    const [ toggleSidebar , setToggleSidebar ] = useState(true)
     
-
-    useEffect(() => {
-        setToggleSidebar(toggle)
-    }, [toggle]);
 
     const handleListItemClick = (event, index) => {
         setSelectedIndex(index);
@@ -56,7 +56,8 @@ const Sidebar = ({ toggle }) => {
     };
 
     return(
-        <div className="container-side" style={toggleSidebar ? { display:'flex'} : {display : 'none'}}> 
+    
+        <div className="container-side" style={sidebarOpen ? { display:'flex'} : {display : 'none'}}> 
         
             {/* Logo  */}
             <div className="logo-div">
@@ -124,8 +125,10 @@ const Sidebar = ({ toggle }) => {
 
 
             </List>
+            
 
         </div>
+    
     )
 }
 

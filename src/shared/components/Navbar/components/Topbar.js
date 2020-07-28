@@ -7,6 +7,7 @@ import './style/topbar.css'
 // Redux
 import { useDispatch, useSelector } from 'react-redux'
 import { LOGOUT } from '../../../../store/_auth/auth'
+import { TOGGLE_SIDENAV } from '../../../../store/_ui/sidenav'
 
 // Material UI
 import { makeStyles } from '@material-ui/core/styles';
@@ -22,18 +23,21 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Topbar = ({parentCb}) => {
+const Topbar = () => {
 
     const classes = useStyles();
 
     const dispatch = useDispatch();
 
     const userInfo = useSelector(state => state.authenticate.auth.user);
-    let firstLetter = userInfo.nome[0].toUpperCase()
+
+    const sidebarOpen = useSelector(state => state.ui.sidenav.isOpen);
+
+    let firstLetter;
+    if(userInfo.nome) firstLetter = userInfo.nome[0].toUpperCase();
     
     const [open, setOpen] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
-    const [ pushHamburguer, setPushHamburguer] = useState(true);
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -46,13 +50,11 @@ const Topbar = ({parentCb}) => {
       };
 
       const toggleSideBar = () => {
-          setPushHamburguer(!pushHamburguer)
-          parentCb(!pushHamburguer)
+          dispatch(TOGGLE_SIDENAV())
       }
 
       const logoutUser = () => {
             dispatch(LOGOUT())
-             
       }
 
       const id = open ? 'simple-popover' : undefined;
@@ -60,7 +62,7 @@ const Topbar = ({parentCb}) => {
     return(
         <div className="container-top">
 
-            <div className="hambuguer" style={pushHamburguer ? {marginLeft: '260px'} : {marginLeft: '20px'}}>
+            <div className="hambuguer" style={sidebarOpen ? {marginLeft: '260px'} : {marginLeft: '20px'}}>
                 <button onClick={toggleSideBar} style={{border: 'none', backgroundColor: 'white'}}>
                         <Menu />
                 </button>

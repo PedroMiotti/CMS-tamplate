@@ -29,8 +29,27 @@ const LoginForm = () => {
 
     const loginUser = () =>{
         dispatch(login(usuarioInput, senhaInput))
+        console.log(usuarioInput)
+        console.log(senhaInput)
 
     }
+
+    // Check for enter key
+    useEffect(() => {
+        const listener = event => {
+          if (event.code === "Enter" || event.code === "NumpadEnter") {
+              console.log(usuarioInput)
+              console.log(senhaInput)
+
+            
+            loginUser();
+          }
+        };
+        document.addEventListener("keydown", listener);
+        return () => {
+          document.removeEventListener("keydown", listener);
+        };
+      }, [senhaInput]);
 
     return(
         <div className="container-login-form">
@@ -50,12 +69,12 @@ const LoginForm = () => {
                     
                         <div className="usuario-div">
                             
-                            <input className="usuario" placeholder="Usuario" type="text" placeholder="&#xf007;   Usuário" style={{fontFamily:'sans-serif, FontAwesome'}} value={usuarioInput} onInput={e => setUsuarioInput(e.target.value)}/>
+                            <input className="usuario" placeholder="Usuario" type="text" placeholder="&#xf007;   Usuário" style={{fontFamily:'sans-serif, FontAwesome'}} onInput={e => setUsuarioInput(e.target.value)}/>
                         </div>
 
                         <div className="senha-div">
 
-                            <input className="senha"  type="password"  placeholder="&#xf023;   Senha" style={{fontFamily:'sans-serif, FontAwesome'}} value={senhaInput} onInput={e => setSenhaInput(e.target.value)}/>
+                            <input className="senha"  type="password"  placeholder="&#xf023;   Senha" style={{fontFamily:'sans-serif, FontAwesome'}} onInput={e => setSenhaInput(e.target.value)}/>
                         </div>
 
                 </form>

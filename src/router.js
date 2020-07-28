@@ -20,6 +20,7 @@ import CriarU from './pages/usuario/criar/index'
 import PageNotFound from './pages/404/index'
 
 
+
 const Routes = () => {
 
     const auth = useSelector(state => state.authenticate.auth.isLoggedIn)
@@ -28,6 +29,7 @@ const Routes = () => {
     return(
         
         <div >
+
             {auth && <Navbar />}
 
             <Switch >
