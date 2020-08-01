@@ -7,7 +7,7 @@ const api = ({dispatch }) => next => async action => {
 
     if(action.type !== actions.apiCallBegan.type) return next(action);
 
-    const { url ,method ,data ,onStart ,onSuccess, onError } = action.payload;
+    const { url, headers ,method ,data ,onStart ,onSuccess, onError } = action.payload;
     
     if(onStart) dispatch({type: onStart});
     
@@ -17,6 +17,7 @@ const api = ({dispatch }) => next => async action => {
         const response = await axios.request({
             baseURL: 'http://localhost:4000',
             url,
+            headers,
             method,
             data,
         });
@@ -32,10 +33,10 @@ const api = ({dispatch }) => next => async action => {
     catch(error){
 
         // General
-        dispatch(actions.apiCallFailed(error.response.message))
-
+        dispatch(actions.apiCallFailed(error.response))
+        
         // Specific
-        if(onError) dispatch({type: onError, payload: error.message})
+        if(onError) dispatch({type: onError, payload: error.response.data.message});
 
     }
 

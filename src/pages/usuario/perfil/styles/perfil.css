@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+.container-perfil {
+    
+    margin-top: 30px;
+    
+}
+
+.container-perfil h1{
+    font-size: 2.5em;
+    color: #27356e;
+    font-family: 'Assistant', sans-serif;
+}
+

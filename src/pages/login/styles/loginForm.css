@@ -59,8 +59,13 @@ body{
 .desc {
     flex: 0.8;
 
-    align-self: start;
-    margin-left: 15%;
+    align-self: flex-start;
+    margin-left: 7%;
+}
+
+.desc h3{
+    color: rgb(55, 55, 104);
+    font-size: 1.4em;
 }
 
 .desc p span{
@@ -75,6 +80,7 @@ body{
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
+    width: 90%;
 
 }
 
@@ -86,7 +92,7 @@ body{
     margin-top: 10px;
     height: 40px;
     border: 0;
-    width: 260px;
+    width: 33vh;
     background-color: rgb(226, 226, 226);
     padding-left: 9px;
     box-shadow: 2px 5px 5px 1px #a3a3a3;
@@ -97,7 +103,7 @@ body{
 .senha-div input{
     margin-top: 10px;
     height: 40px;
-    width: 260px;
+    width: 33vh;
     border: 0;
 
     background-color: rgb(226, 226, 226);

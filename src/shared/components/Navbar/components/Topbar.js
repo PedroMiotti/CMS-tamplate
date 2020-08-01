@@ -9,11 +9,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { LOGOUT } from '../../../../store/_auth/auth'
 import { TOGGLE_SIDENAV } from '../../../../store/_ui/sidenav'
 
+// React Router
+import { Link } from 'react-router-dom';
+
 // Material UI
 import { makeStyles } from '@material-ui/core/styles';
 import { Avatar, Popover, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
 //Icons
-import { ExitToApp, AccountCircle, Menu } from '@material-ui/icons';
+import { ExitToApp, AccountCircle, Menu, ArrowBack } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
     avatarColor: {
@@ -64,7 +67,7 @@ const Topbar = () => {
 
             <div className="hambuguer" style={sidebarOpen ? {marginLeft: '260px'} : {marginLeft: '20px'}}>
                 <button onClick={toggleSideBar} style={{border: 'none', backgroundColor: 'white'}}>
-                        <Menu />
+                        {sidebarOpen ? <ArrowBack/> : <Menu />}
                 </button>
             </div>
                 
@@ -91,14 +94,16 @@ const Topbar = () => {
                         }}
                         >
                         <List component="nav" >
-                            <ListItem button>
+                            <Link to="/usuario/perfil">
+                                <ListItem button onClick={handleClickAway}>
 
-                                <ListItemIcon >
-                                    <AccountCircle />
-                                </ListItemIcon>
+                                    <ListItemIcon >
+                                        <AccountCircle />
+                                    </ListItemIcon>
 
-                                <ListItemText primary="Perfil" />
-                            </ListItem>
+                                    <ListItemText primary="Perfil" />
+                                </ListItem>
+                            </Link>
 
                             <ListItem button onClick={logoutUser}>
 

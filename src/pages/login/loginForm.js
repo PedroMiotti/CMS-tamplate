@@ -29,18 +29,13 @@ const LoginForm = () => {
 
     const loginUser = () =>{
         dispatch(login(usuarioInput, senhaInput))
-        console.log(usuarioInput)
-        console.log(senhaInput)
-
+       
     }
 
     // Check for enter key
     useEffect(() => {
         const listener = event => {
           if (event.code === "Enter" || event.code === "NumpadEnter") {
-              console.log(usuarioInput)
-              console.log(senhaInput)
-
             
             loginUser();
           }
@@ -60,7 +55,7 @@ const LoginForm = () => {
                 </div>
 
                 <div className="desc">
-                    <p>Bem-Vindo !</p>
+                    <h3>Bem-Vindo !</h3>
                     <p><span>Faça o login para continuar</span></p>
 
                 </div>

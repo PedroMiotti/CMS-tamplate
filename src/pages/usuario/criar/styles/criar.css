@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400&display=swap');
 
 *{
     box-sizing: border-box;
@@ -10,7 +11,30 @@
 }
 
 .container-criarU h1{
-    font-size: 2em;
+    font-size: 2.5em;
     color: #27356e;
-    font-family:  sans-serif;
+    font-family: 'Assistant', sans-serif;
+}
+
+.form-frame{
+    width: 50%;
+    border: 0px solid rgba(0, 0, 0, 0.288);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 6px 6px 4px 8px #bbbbbb91
+}
+
+.form-frame h5{
+    color:  #27356e;
+    font-size: 1.6em;
+    font-family: 'Assistant', sans-serif;
+}
+
+
+@media all and (max-width: 767px){
+    .form-frame{
+        width: 100%;
+        
+    }
+    
 }

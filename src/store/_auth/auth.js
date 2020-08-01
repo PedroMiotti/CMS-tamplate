@@ -11,7 +11,6 @@ import history from '../../helpers/history'
 const jwtDecode = require('jwt-decode');
 
 
-
 const hasToken = localStorage.getItem('jwt');
 
 let userInfo;
@@ -69,6 +68,7 @@ const url = "/usuario"
 
 export const login = (username, passwd) => apiCallBegan({
         url: url + "/login",
+        headers: null,
         method: "post",
         data: {username, password: passwd},
         onStart: LOGIN_REQUESTED.type,

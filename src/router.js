@@ -17,6 +17,7 @@ import Login from './pages/login/login'
 import Dashboard from './pages/dashboard/index'
 import ListarU from './pages/usuario/listar/index'
 import CriarU from './pages/usuario/criar/index'
+import Perfil from './pages/usuario/perfil/index'
 import PageNotFound from './pages/404/index'
 
 
@@ -42,6 +43,8 @@ const Routes = () => {
                 {/* Usuario  */}
                 <ProtectedRoute  path='/usuario/criar' component={CriarU} /> 
                 <ProtectedRoute  path='/usuario/listar' component={ListarU} /> 
+                <ProtectedRoute  path='/usuario/perfil' component={Perfil} /> 
+
 
                 <Route  path='*' component={PageNotFound} />
                 
