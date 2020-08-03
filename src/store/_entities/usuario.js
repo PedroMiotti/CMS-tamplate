@@ -17,7 +17,8 @@ const slice = createSlice({
         id: null,
         login: "",
         nome: "",
-        perfil: "",
+        perfil: null,
+        updateUserList: false,
         listaUsuarios: []
     },
     reducers: {
@@ -40,7 +41,7 @@ const slice = createSlice({
             usuario.id = action.payload.u.id;
             usuario.login = action.payload.u.login;
             usuario.nome = action.payload.u.nome;
-            usuario.perfil = action.payload.u.perfil;
+            usuario.perfil = action.payload.u.perf_id;
             
         },
 
@@ -51,16 +52,33 @@ const slice = createSlice({
 
         },
 
+        USER_EDITED_SUCCESSFUL: (usuario, action) => {
+            usuario.loading = false;
+            usuario.success = true;
+            usuario.successMessage = action.payload.message;
+        },
+
+        USER_DELETED_SUCCESSFUL: (usuario, action) => {
+            usuario.loading = false;
+            usuario.error = false;
+            usuario.success = true;
+            usuario.successMessage = action.payload.message;
+            usuario.updateUserList = true; 
+
+        },
+
         USER_LIST_SUCCESSFUL: (usuario, action) => {
             usuario.loading = false;
             usuario.error = false;
             usuario.listaUsuarios = action.payload;
-        }
+        },
+
+        
 
     }
 });
 
-export const { USER_REQUESTED, USER_FAILED, USER_INFO_SUCCESSFUL, USER_CREATED_SUCCESSFUL, USER_LIST_SUCCESSFUL } = slice.actions;
+export const { USER_REQUESTED, USER_FAILED, USER_INFO_SUCCESSFUL, USER_CREATED_SUCCESSFUL, USER_LIST_SUCCESSFUL, USER_EDITED_SUCCESSFUL, USER_DELETED_SUCCESSFUL } = slice.actions;
 
 export default slice.reducer;
 
@@ -91,5 +109,25 @@ export const listUser = () => apiCallBegan({
     headers: authHeader(),
     onStart: USER_REQUESTED.type,
     onSuccess: USER_LIST_SUCCESSFUL.type,
+    onError: USER_FAILED.type
+})
+
+export const editUser = (id, nome, perfil ) => apiCallBegan({
+    url: url + "/editar",
+    headers: authHeader(),
+    method: "post",
+    data: { id, nome, perfil },
+    onStart: USER_REQUESTED.type,
+    onSuccess: USER_EDITED_SUCCESSFUL.type,
+    onError: USER_FAILED.type
+});
+
+export const deleteUser = (id) => apiCallBegan({
+    url: url + "/excluir",
+    headers: authHeader(),
+    method: "post",
+    data: { id },
+    onStart: USER_REQUESTED.type,
+    onSuccess: USER_DELETED_SUCCESSFUL.type,
     onError: USER_FAILED.type
 })

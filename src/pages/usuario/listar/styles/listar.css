@@ -7,4 +7,9 @@
     display: flex;
     justify-content: center;
     margin-top: 30px;
+    
+}
+
+Table{
+    box-shadow: 6px 6px 4px 8px #bbbbbb91;
 }

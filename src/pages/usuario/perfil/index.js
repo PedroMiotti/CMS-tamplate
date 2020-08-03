@@ -15,7 +15,6 @@ import SnackLoad from '../../../shared/components/Snackload/index';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
 
@@ -70,7 +69,7 @@ const Perfil = () => {
                     
                         <Form.Group controlId="Login">
                             <Form.Label>Login</Form.Label>
-                            <Form.Control value={u_login} onChange={e => setU_login(e.target.value)}/>
+                            <Form.Control value={u_login} onChange={e => setU_login(e.target.value)} disabled/>
                             
                         </Form.Group>
 

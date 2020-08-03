@@ -58,7 +58,6 @@ const CriarU = () => {
     }
 
 
-
     return (
         <div style={sidebarOpen ? {position: "relative", marginLeft: "260px"} : {position: "relative", marginLeft: "0px"}}>
             <Container className="container-criarU" >

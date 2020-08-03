@@ -11,14 +11,18 @@ import Navbar from './shared/components/Navbar/index'
 import ProtectedRoute from './shared/components/ProtectedRoute/index'
 
 // Pages 
-import LoginForm from './pages/login/loginForm'
-import Login from './pages/login/login'
-
-import Dashboard from './pages/dashboard/index'
-import ListarU from './pages/usuario/listar/index'
-import CriarU from './pages/usuario/criar/index'
-import Perfil from './pages/usuario/perfil/index'
-import PageNotFound from './pages/404/index'
+    //Login
+        import LoginForm from './pages/login/loginForm'
+        import Login from './pages/login/login'
+    // Home
+        import Dashboard from './pages/dashboard/index'
+    // Usuario
+        import ListarU from './pages/usuario/listar/index'
+        import CriarU from './pages/usuario/criar/index'
+        import EditarU from './pages/usuario/editar/index'
+        import Perfil from './pages/usuario/perfil/index'
+    // 404
+    import PageNotFound from './pages/404/index'
 
 
 
@@ -42,10 +46,11 @@ const Routes = () => {
                 <ProtectedRoute  path='/home' component={Dashboard} /> 
                 {/* Usuario  */}
                 <ProtectedRoute  path='/usuario/criar' component={CriarU} /> 
+                <ProtectedRoute  path='/usuario/editar/:userID' component={EditarU} /> 
                 <ProtectedRoute  path='/usuario/listar' component={ListarU} /> 
                 <ProtectedRoute  path='/usuario/perfil' component={Perfil} /> 
 
-
+                {/* 404  */}
                 <Route  path='*' component={PageNotFound} />
                 
             </Switch>
