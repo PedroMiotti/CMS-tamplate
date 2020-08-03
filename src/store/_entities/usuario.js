@@ -11,13 +11,14 @@ const slice = createSlice({
     initialState: {
         loading: false,
         error: false,
+        success: false,
         errorMessage: '',
         successMessage: '',
-        success: false,
         id: null,
         login: "",
         nome: "",
-        perfil: ""
+        perfil: "",
+        listaUsuarios: []
     },
     reducers: {
         USER_REQUESTED: (usuario, action) => {
@@ -50,10 +51,16 @@ const slice = createSlice({
 
         },
 
+        USER_LIST_SUCCESSFUL: (usuario, action) => {
+            usuario.loading = false;
+            usuario.error = false;
+            usuario.listaUsuarios = action.payload;
+        }
+
     }
 });
 
-export const { USER_REQUESTED, USER_FAILED, USER_INFO_SUCCESSFUL, USER_CREATED_SUCCESSFUL } = slice.actions;
+export const { USER_REQUESTED, USER_FAILED, USER_INFO_SUCCESSFUL, USER_CREATED_SUCCESSFUL, USER_LIST_SUCCESSFUL } = slice.actions;
 
 export default slice.reducer;
 
@@ -78,3 +85,11 @@ export const createUser = (login, nome, perfil ) => apiCallBegan({
     onSuccess: USER_CREATED_SUCCESSFUL.type,
     onError: USER_FAILED.type
 });
+
+export const listUser = () => apiCallBegan({
+    url: url + "/listar",
+    headers: authHeader(),
+    onStart: USER_REQUESTED.type,
+    onSuccess: USER_LIST_SUCCESSFUL.type,
+    onError: USER_FAILED.type
+})
