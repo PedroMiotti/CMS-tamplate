@@ -17,6 +17,9 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
+// Helpers
+import { toUppercase } from '../../../helpers/toUppercase'
+
 
 
 const Perfil = () => {
@@ -75,7 +78,7 @@ const Perfil = () => {
 
                         <Form.Group controlId="Nome">
                             <Form.Label>Nome</Form.Label>
-                            <Form.Control value={u_nome} onChange={e => setU_nome(e.target.value)}/>
+                            <Form.Control value={u_nome} onChange={e => setU_nome(e.target.value)} onInput={(e) => toUppercase(e)}/>
                         </Form.Group>
 
                         <BottomLine />

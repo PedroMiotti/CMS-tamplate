@@ -21,6 +21,9 @@ import { userInfo } from '../../../store/_entities/usuario';
 // Router
 import { useParams } from 'react-router-dom';
 
+// Helpers
+import { toUppercase } from '../../../helpers/toUppercase'
+
 
 const EditarU = () => {
     
@@ -100,7 +103,7 @@ const EditarU = () => {
 
                         <Form.Group controlId="formBasicNome">
                             <Form.Label>Nome</Form.Label>
-                            <Form.Control ref={nomeInput} value={u_nome} onChange={e => setU_nome(e.target.value)}/>
+                            <Form.Control ref={nomeInput} value={u_nome} onChange={e => setU_nome(e.target.value)} onInput={(e) => toUppercase(e)}/>
                         </Form.Group>
 
                         <Form.Group >

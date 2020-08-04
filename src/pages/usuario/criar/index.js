@@ -17,7 +17,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getListaPerfil } from '../../../store/_entities/perfil';
 import { createUser } from '../../../store/_entities/usuario';
 
-
+// Helpers
+import { toUppercase } from '../../../helpers/toUppercase'
 
 
 const CriarU = () => {
@@ -76,13 +77,13 @@ const CriarU = () => {
                     
                         <Form.Group controlId="formBasicLogin">
                             <Form.Label>Login</Form.Label>
-                            <Form.Control ref={loginInput}/>
+                            <Form.Control ref={loginInput} onInput={(e) => toUppercase(e)}/>
                             
                         </Form.Group>
 
                         <Form.Group controlId="formBasicNome">
                             <Form.Label>Nome</Form.Label>
-                            <Form.Control ref={nomeInput}/>
+                            <Form.Control ref={nomeInput} onInput={(e) => toUppercase(e)}/>
                         </Form.Group>
 
                         <Form.Group >
