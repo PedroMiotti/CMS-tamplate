@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 
 // Style
 import './styles/loginForm.css'
@@ -15,12 +15,15 @@ import { login } from '../../store/_auth/auth'
 import SnackMessage from '../../shared/components/Snackbar/index'
 import SnackLoad from '../../shared/components/Snackload/index';
 
+// Helpers
+import { toUppercase } from '../../helpers/toUppercase'
+
 
 
 const LoginForm = () => {
 
-    const [ usuarioInput, setUsuarioInput ] = useState('');
-    const [ senhaInput, setSenhaInput ] = useState('');
+    const loginInput = useRef();
+    const senhaInput = useRef();
 
     const dispatch = useDispatch();
 
@@ -28,7 +31,11 @@ const LoginForm = () => {
     const loading = useSelector(state => state.authenticate.auth.loading);
 
     const loginUser = () =>{
-        dispatch(login(usuarioInput, senhaInput))
+
+        const senha = senhaInput.current.value;
+        const loginInp = loginInput.current.value;
+
+        dispatch(login(loginInp, senha))
        
     }
 
@@ -64,12 +71,12 @@ const LoginForm = () => {
                     
                         <div className="usuario-div">
                             
-                            <input className="usuario" placeholder="Usuario" type="text" placeholder="&#xf007;   Usuário" style={{fontFamily:'sans-serif, FontAwesome'}} onInput={e => setUsuarioInput(e.target.value)}/>
+                            <input className="usuario" placeholder="Usuario" type="text" placeholder="&#xf007;   Usuário" style={{fontFamily:'sans-serif, FontAwesome'}} ref={loginInput} onInput={(e) => toUppercase(e)}/>
                         </div>
 
                         <div className="senha-div">
 
-                            <input className="senha"  type="password"  placeholder="&#xf023;   Senha" style={{fontFamily:'sans-serif, FontAwesome'}} onInput={e => setSenhaInput(e.target.value)}/>
+                            <input className="senha"  type="password"  placeholder="&#xf023;   Senha" style={{fontFamily:'sans-serif, FontAwesome'}} ref={senhaInput} onInput={(e) => toUppercase(e)}/>
                         </div>
 
                 </form>

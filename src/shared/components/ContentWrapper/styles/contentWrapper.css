@@ -1,0 +1,27 @@
+.contentWrapper{
+    position: relative;
+    margin-left: 260px;
+}
+
+.contentWrapper-closed{
+    position: relative;
+    margin-left: 0px;
+}
+
+
+/* Mobile  */
+@media all and (max-width: 767px){
+    .contentWrapper{ 
+        position: static;
+        margin-left: 0px;
+    }
+    
+}
+
+/* Tablet  */
+@media all and (min-width: 768px) and (max-width: 880px){
+    .contentWrapper{
+        position: static;
+        margin-left: 0px;
+    }
+}

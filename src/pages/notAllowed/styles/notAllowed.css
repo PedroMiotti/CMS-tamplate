@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+.container-nAllowed{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    background-color: #252834;
+}
+
+.text-nAllowed h1{
+    color: #fff;
+    font-size: 8em;
+    font-family: 'Anton', sans-serif;
+    margin-bottom: 130px;
+}
+
+.message-container-nAllowed h2{
+    font-size: 2em;
+    font-family: 'Anton', sans-serif;
+    color: #fff;
+    margin-bottom: 60px;
+}
+
+.message-container button{
+    font-size: 1em;
+    font-family: 'Anton', sans-serif;
+    color: #252834;
+    width: 50%;
+    border: 0;
+    border-radius: 30px;
+    background-color: #fff;
+    height: 40px;
+}
+
+.message-container button:hover{
+    background-color: #252834;
+    color: #fff;
+} 
+
+

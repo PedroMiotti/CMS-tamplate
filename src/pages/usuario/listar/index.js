@@ -6,6 +6,7 @@ import BottomLine from '../../../shared/components/BottomLine/index';
 import CustomModal from '../../../shared/components/Modal/index'
 import SnackMessage from '../../../shared/components/Snackbar/index'
 import SnackLoad from '../../../shared/components/Snackload/index';
+import ContentWrapper from '../../../shared/components/ContentWrapper/index'
 
 // Bootstrap
 import Table from 'react-bootstrap/Table';
@@ -30,7 +31,6 @@ import { TOGGLE_MODAL } from "../../../store/_ui/modal";
 const ListarU = () => {
 
         //_ui
-        const sidebarOpen = useSelector(state => state.ui.sidenav.isOpen);
         const modalOpen = useSelector(state => state.ui.modal.isOpen);
         //_entitie
         const usuarioLista = useSelector(state => state.entitie.usuario.listaUsuarios);  
@@ -66,8 +66,7 @@ const ListarU = () => {
         },[usuarioUpdateUserList])
         
         return (
-            <div style={sidebarOpen ? {position: "relative", marginLeft: "265px", marginRight: "15px"} : {position: "relative", marginLeft: "15px", marginRight: "15px"}} className="container-listar">
-                
+            <ContentWrapper>
                 <CustomModal action={delUser} title="Excluir usuario " description="Tem certeza que deseja excluir esse usuario ?" bttText="excluir" bttColor="secondary" />
 
                 <Container className="container-criarU" >
@@ -123,7 +122,7 @@ const ListarU = () => {
 
                 {usuarioDeletedSuccess && <SnackMessage message={usuarioDeletedSuccessMessage} color={"success"} show={usuarioDeletedSuccess}/>}
 
-            </div>
+            </ContentWrapper>
         );
         
 }

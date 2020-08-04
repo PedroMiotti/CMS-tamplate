@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import './styles/criar.css'
 
 // Components
 import BottomLine from '../../../shared/components/BottomLine/index'
 import SnackMessage from '../../../shared/components/Snackbar/index'
 import SnackLoad from '../../../shared/components/Snackload/index';
+import ContentWrapper from '../../../shared/components/ContentWrapper/index'
 
 // Bootstrap
 import Form from 'react-bootstrap/Form'
@@ -23,8 +24,6 @@ import { toUppercase } from '../../../helpers/toUppercase'
 
 const CriarU = () => {
     
-    //_ui
-    const sidebarOpen = useSelector(state => state.ui.sidenav.isOpen);
     //_entite
     const lista_perfil = useSelector(state => state.entitie.perfil.lista);
     const usuarioCreatedSuccess = useSelector(state => state.entitie.usuario.success);
@@ -60,7 +59,7 @@ const CriarU = () => {
 
 
     return (
-        <div style={sidebarOpen ? {position: "relative", marginLeft: "260px"} : {position: "relative", marginLeft: "0px"}}>
+        <ContentWrapper >
             <Container className="container-criarU" >
                 <Row className="justify-content-start" >
                     <h1 >Criar Usuário</h1>
@@ -116,8 +115,9 @@ const CriarU = () => {
             {usuarioCreatedFailed && <SnackMessage message={usuarioCreatedErrorMessage} color={"error"} show={usuarioCreatedFailed}/>}
 
             {usuarioCreatedSuccess && <SnackMessage message={usuarioCreatedSuccessMessage} color={"success"} show={usuarioCreatedSuccess}/>}
+        </ContentWrapper>
 
-        </div>
+        
     )
 }
 

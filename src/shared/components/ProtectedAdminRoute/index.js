@@ -4,12 +4,14 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
 
-const ProtectedRoute = ({component: Component, ...rest }) => (
+
+const ProtectedAdminRoute = ({component: Component,perfilId ,...rest }) => (
+
     <Route {...rest} render={props => (
-        localStorage.getItem('jwt')
+        (localStorage.getItem('jwt') && perfilId === 1)
             ? <Component {...props} />
-            : <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
+            : <Redirect to={{ pathname: '/home', state: { from: props.location } }} />
     )} />
 )
 
-export default ProtectedRoute;
+export default ProtectedAdminRoute;

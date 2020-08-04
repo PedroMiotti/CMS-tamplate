@@ -1,14 +1,15 @@
 
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 import { Switch, Route } from 'react-router-dom';
 
 // Redux
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 // Components
 import Navbar from './shared/components/Navbar/index'
 import ProtectedRoute from './shared/components/ProtectedRoute/index'
+import ProtectedAdminRoute from './shared/components/ProtectedAdminRoute/index'
 
 // Pages 
     //Login
@@ -22,14 +23,16 @@ import ProtectedRoute from './shared/components/ProtectedRoute/index'
         import EditarU from './pages/usuario/editar/index'
         import Perfil from './pages/usuario/perfil/index'
     // 404
-    import PageNotFound from './pages/404/index'
+        import PageNotFound from './pages/404/index'
 
 
 
 const Routes = () => {
 
+    //_auth
     const auth = useSelector(state => state.authenticate.auth.isLoggedIn)
-
+    //_entitie
+    const usuarioPerfil = useSelector(state => state.authenticate.auth.user.perf_id);
 
     return(
         
@@ -45,10 +48,10 @@ const Routes = () => {
                 {/* auth  */}
                 <ProtectedRoute  path='/home' component={Dashboard} /> 
                 {/* Usuario  */}
-                <ProtectedRoute  path='/usuario/criar' component={CriarU} /> 
-                <ProtectedRoute  path='/usuario/editar/:userID' component={EditarU} /> 
-                <ProtectedRoute  path='/usuario/listar' component={ListarU} /> 
-                <ProtectedRoute  path='/usuario/perfil' component={Perfil} /> 
+                <ProtectedAdminRoute perfilId={usuarioPerfil} path='/usuario/criar' component={CriarU} /> 
+                <ProtectedAdminRoute perfilId={usuarioPerfil} path='/usuario/editar/:userID' component={EditarU} /> 
+                <ProtectedAdminRoute perfilId={usuarioPerfil} path='/usuario/listar' component={ListarU} /> 
+                <ProtectedAdminRoute perfilId={usuarioPerfil} path='/usuario/perfil' component={Perfil} /> 
 
                 {/* 404  */}
                 <Route  path='*' component={PageNotFound} />
@@ -62,3 +65,6 @@ const Routes = () => {
 
 
 export default Routes;
+
+// ProtectedAdminRoute --> Only for logged in && admin users
+// ProtectedRoute --> Only for logged in users

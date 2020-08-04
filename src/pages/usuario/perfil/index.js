@@ -10,6 +10,7 @@ import { userInfo } from '../../../store/_entities/usuario';
 import BottomLine from '../../../shared/components/BottomLine/index';
 import SnackMessage from '../../../shared/components/Snackbar/index'
 import SnackLoad from '../../../shared/components/Snackload/index';
+import ContentWrapper from '../../../shared/components/ContentWrapper/index'
 
 // Bootstrap
 import Form from 'react-bootstrap/Form';
@@ -24,8 +25,6 @@ import { toUppercase } from '../../../helpers/toUppercase'
 
 const Perfil = () => {
     
-    // _ui --> Sidenav
-    const sidebarOpen = useSelector(state => state.ui.sidenav.isOpen);
     //_auth --> Auth
     const userId = useSelector(state => state.authenticate.auth.user.id);
     //_entitie --> Usuario
@@ -55,7 +54,7 @@ const Perfil = () => {
 
 
     return (
-        <div style={sidebarOpen ? {position: "relative", marginLeft: "260px"} : {position: "relative", marginLeft: "0px"}}>
+        <ContentWrapper>
             <Container className="container-perfil" >
                 <Row className="justify-content-start" >
                     <h1 >Perfil</h1>
@@ -114,7 +113,7 @@ const Perfil = () => {
 
             {usuario_error && <SnackMessage message={"Erro ao encontrar o usuário :("} color={"error"} show={usuario_error}/>}
 
-        </div>
+        </ContentWrapper>
     )
 }
 

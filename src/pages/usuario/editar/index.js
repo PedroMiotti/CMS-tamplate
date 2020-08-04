@@ -5,6 +5,7 @@ import './styles/editar.css'
 import BottomLine from '../../../shared/components/BottomLine/index'
 import SnackMessage from '../../../shared/components/Snackbar/index'
 import SnackLoad from '../../../shared/components/Snackload/index';
+import ContentWrapper from '../../../shared/components/ContentWrapper/index'
 
 // Bootstrap
 import Form from 'react-bootstrap/Form'
@@ -27,8 +28,6 @@ import { toUppercase } from '../../../helpers/toUppercase'
 
 const EditarU = () => {
     
-    //_ui --> Sidebar
-    const sidebarOpen = useSelector(state => state.ui.sidenav.isOpen);
     //_entitie --> Usuario
     const lista_perfil = useSelector(state => state.entitie.perfil.lista);
     const usuarioEditedSuccess = useSelector(state => state.entitie.usuario.success);
@@ -80,7 +79,7 @@ const EditarU = () => {
     }
 
     return (
-        <div style={sidebarOpen ? {position: "relative", marginLeft: "260px"} : {position: "relative", marginLeft: "0px"}}>
+        <ContentWrapper>
             <Container className="container-criarU" >
                 <Row className="justify-content-start" >
                     <h1 >Editar Usuário</h1>
@@ -136,7 +135,7 @@ const EditarU = () => {
 
             {usuarioEditedSuccess && <SnackMessage message={usuarioEditedSuccessMessage} color={"success"} show={usuarioEditedSuccess}/>}
 
-        </div>
+        </ContentWrapper>
     )
 }
 

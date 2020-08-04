@@ -21,7 +21,9 @@ import { ExitToApp, AccountCircle, Menu, ArrowBack } from '@material-ui/icons';
 const useStyles = makeStyles((theme) => ({
     avatarColor: {
         color: '#fff',
-        backgroundColor: '#333747'
+        backgroundColor: '#333747',
+        boxShadow: "0 8px 10px rgba(0,0,0,.19),0 4px 4px rgba(0,0,0,.23)!important",
+        alignSelf: "center"
 
     },
 }));
@@ -37,7 +39,11 @@ const Topbar = () => {
     const sidebarOpen = useSelector(state => state.ui.sidenav.isOpen);
 
     let firstLetter;
-    if(userInfo.nome) firstLetter = userInfo.nome[0].toUpperCase();
+    let getLowerCaseName;
+    if(userInfo.nome) {
+        firstLetter = userInfo.nome[0].toUpperCase();
+        getLowerCaseName =  firstLetter + userInfo.nome.slice(1).toLowerCase()
+    }
     
     const [open, setOpen] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
@@ -76,6 +82,7 @@ const Topbar = () => {
 
                     <Avatar className={classes.avatarColor}>{firstLetter}</Avatar>
 
+                    <h4>{getLowerCaseName}</h4>
                 </button>
             
                 {open ? (
