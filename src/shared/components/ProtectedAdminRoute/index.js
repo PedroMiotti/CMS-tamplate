@@ -10,7 +10,7 @@ const ProtectedAdminRoute = ({component: Component,perfilId ,...rest }) => (
     <Route {...rest} render={props => (
         (localStorage.getItem('jwt') && perfilId === 1)
             ? <Component {...props} />
-            : <Redirect to={{ pathname: '/home', state: { from: props.location } }} />
+            : <Redirect to={{ pathname: '/private', state: { from: props.location } }} />
     )} />
 )
 

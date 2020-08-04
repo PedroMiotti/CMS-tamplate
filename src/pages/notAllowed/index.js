@@ -15,7 +15,7 @@ const PageNotFound = () => {
         <div className="container-nAllowed">
             <div className="text-nAllowed">
                 <h1>
-                    404
+                    403
                 </h1>
             </div>
 

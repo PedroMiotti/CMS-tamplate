@@ -16,7 +16,7 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
 
 // Material UI
-import { Edit, Delete } from '@material-ui/icons';
+import { EditOutlined, Clear } from '@material-ui/icons';
 
 // Router
 import { Link } from 'react-router-dom';
@@ -78,7 +78,7 @@ const ListarU = () => {
                     </Row>
 
                     <Row>
-                        <Table striped borderless hover>
+                        <Table striped borderless hover >
                             <thead className="thead-dark"> 
                                 <tr>
                                 <th></th>
@@ -93,13 +93,13 @@ const ListarU = () => {
                                         <td className="" style={{width:  "8.33%", textAlign: "center"}}>
                                             <OverlayTrigger overlay={<Tooltip id="tooltip-editar">Editar</Tooltip>}>
                                                 <Link to={`/usuario/editar/${lista.user_id}`}>
-                                                    <Edit style={{fill: "#252834", marginRight: "12px"}}/>
+                                                    <EditOutlined style={{fill: "#fff", marginRight: "12px", backgroundColor: '#1fa5a4', borderRadius: "5px", fontSize: 20}}/>
                                                 </Link> 
                                             </OverlayTrigger>
 
                                             <OverlayTrigger overlay={<Tooltip id="tooltip-deletar">Deletar</Tooltip>}>
                                                 <Link onClick={() => toggleModal(lista.user_id)} >
-                                                    <Delete style={{fill: "#f05757"}}/>
+                                                    <Clear style={{fill: "#fff", backgroundColor: '#f05757', borderRadius: "5px", fontSize: 20}}/>
                                                 </Link>
                                             </OverlayTrigger>
         

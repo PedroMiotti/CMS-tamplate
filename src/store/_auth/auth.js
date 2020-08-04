@@ -37,7 +37,7 @@ const slice = createSlice({
 
             localStorage.setItem("jwt", action.payload.token)
             history.push("/home")
-            window.location.reload(true); //TODO - Find better way
+            window.location.reload(true);
             
         },
         

@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 // Redux 
@@ -10,12 +9,21 @@ import { Provider } from 'react-redux'
 // Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+// React-Router
+import { Router } from 'react-router-dom'
+import Routes from './router'
+
+// History
+import history from './helpers/history'
+
 
 ReactDOM.render(
  
-    <Provider store={store}>
-      <App />
-    </Provider>,
+    <Router history={history}>
+      <Provider store={store}>
+        <Routes />
+      </Provider>
+    </Router>,
 
   document.getElementById('root')
 );

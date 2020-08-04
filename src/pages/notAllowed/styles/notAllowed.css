@@ -24,18 +24,18 @@
     margin-bottom: 60px;
 }
 
-.message-container button{
+.message-container-nAllowed button{
     font-size: 1em;
     font-family: 'Anton', sans-serif;
     color: #252834;
-    width: 50%;
+    width: 30%;
     border: 0;
     border-radius: 30px;
     background-color: #fff;
     height: 40px;
 }
 
-.message-container button:hover{
+.message-container-nAllowed button:hover{
     background-color: #252834;
     color: #fff;
 } 

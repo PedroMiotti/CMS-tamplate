@@ -24,6 +24,8 @@ import ProtectedAdminRoute from './shared/components/ProtectedAdminRoute/index'
         import Perfil from './pages/usuario/perfil/index'
     // 404
         import PageNotFound from './pages/404/index'
+    //403
+        import NotAllowed from './pages/notAllowed'
 
 
 
@@ -53,6 +55,8 @@ const Routes = () => {
                 <ProtectedAdminRoute perfilId={usuarioPerfil} path='/usuario/listar' component={ListarU} /> 
                 <ProtectedAdminRoute perfilId={usuarioPerfil} path='/usuario/perfil' component={Perfil} /> 
 
+                {/* 403  */}
+                <Route path='/private' component={NotAllowed}/>
                 {/* 404  */}
                 <Route  path='*' component={PageNotFound} />
                 

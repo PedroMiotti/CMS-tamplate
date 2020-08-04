@@ -17,6 +17,7 @@ import SnackLoad from '../../shared/components/Snackload/index';
 
 // Helpers
 import { toUppercase } from '../../helpers/toUppercase'
+import history from '../../helpers/history'
 
 
 
@@ -36,6 +37,7 @@ const LoginForm = () => {
         const loginInp = loginInput.current.value;
 
         dispatch(login(loginInp, senha))
+
        
     }
 
