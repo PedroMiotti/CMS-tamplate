@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 // Style
 import './styles/loginForm.css'
@@ -17,8 +17,6 @@ import SnackLoad from '../../shared/components/Snackload/index';
 
 // Helpers
 import { toUppercase } from '../../helpers/toUppercase'
-import history from '../../helpers/history'
-
 
 
 const LoginForm = () => {
@@ -54,6 +52,8 @@ const LoginForm = () => {
           document.removeEventListener("keydown", listener);
         };
       }, [senhaInput]);
+
+      // TODO --> Check this useEffect
 
     return(
         <div className="container-login-form">

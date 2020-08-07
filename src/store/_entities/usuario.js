@@ -1,5 +1,5 @@
 // Redux
-import { createSlice, createSelector } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { apiCallBegan } from "../api";
 
 // Helpers

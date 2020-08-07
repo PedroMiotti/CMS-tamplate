@@ -28,10 +28,8 @@ const Perfil = () => {
     //_auth --> Auth
     const userId = useSelector(state => state.authenticate.auth.user.id);
     //_entitie --> Usuario
-    const usuario_id = useSelector( state => state.entitie.usuario.id);
     const usuario_nome = useSelector( state => state.entitie.usuario.nome);
     const usuario_login = useSelector( state => state.entitie.usuario.login);
-    const usuario_perfil = useSelector( state => state.entitie.usuario.perfil);
 
     const usuario_error = useSelector( state => state.entitie.usuario.error);
     const usuario_loading = useSelector( state => state.entitie.usuario.loading);

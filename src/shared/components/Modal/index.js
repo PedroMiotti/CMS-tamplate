@@ -1,4 +1,4 @@
-import React, { useState, forwardRef, useEffect } from "react";
+import React, { forwardRef } from "react";
 
 // Material UI
 import Button from "@material-ui/core/Button";
