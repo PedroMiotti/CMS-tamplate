@@ -73,12 +73,25 @@ const slice = createSlice({
             usuario.listaUsuarios = action.payload;
         },
 
+        USER_EDIT_PROFILE_SUCCESSFUL: (usuario, action) => {
+            usuario.loading = false;
+            usuario.error = false;
+            usuario.success = true;
+            usuario.successMessage =  action.payload.message;
+            usuario.errorMessage =  action.payload.message;
+
+
+            localStorage.removeItem("jwt")
+            localStorage.setItem("jwt", action.payload.token)
+            
+        },
+
         
 
     }
 });
 
-export const { USER_REQUESTED, USER_FAILED, USER_INFO_SUCCESSFUL, USER_CREATED_SUCCESSFUL, USER_LIST_SUCCESSFUL, USER_EDITED_SUCCESSFUL, USER_DELETED_SUCCESSFUL } = slice.actions;
+export const { USER_REQUESTED, USER_FAILED, USER_INFO_SUCCESSFUL, USER_CREATED_SUCCESSFUL, USER_LIST_SUCCESSFUL, USER_EDITED_SUCCESSFUL, USER_DELETED_SUCCESSFUL, USER_EDIT_PROFILE_SUCCESSFUL } = slice.actions;
 
 export default slice.reducer;
 
@@ -129,5 +142,15 @@ export const deleteUser = (id) => apiCallBegan({
     data: { id },
     onStart: USER_REQUESTED.type,
     onSuccess: USER_DELETED_SUCCESSFUL.type,
+    onError: USER_FAILED.type
+})
+
+export const editUserProfile = (id, usuario, senhaAtual, novaSenha) => apiCallBegan({
+    url: url + "/editarPerfil",
+    headers: authHeader(),
+    method: "post",
+    data: { id, usuario, senhaAtual, novaSenha },
+    onStart: USER_REQUESTED.type,
+    onSuccess: USER_EDIT_PROFILE_SUCCESSFUL.type,
     onError: USER_FAILED.type
 })

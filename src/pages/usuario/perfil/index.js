@@ -5,6 +5,7 @@ import './styles/perfil.css';
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
 import { userInfo } from '../../../store/_entities/usuario';
+import { editUserProfile } from '../../../store/_entities/usuario';
 
 // Components
 import BottomLine from '../../../shared/components/BottomLine/index';
@@ -19,7 +20,7 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
 // Helpers
-import { toUppercase } from '../../../helpers/toUppercase'
+import { toUppercase } from '../../../helpers/toUppercase';
 
 
 
@@ -33,9 +34,16 @@ const Perfil = () => {
 
     const usuario_error = useSelector( state => state.entitie.usuario.error);
     const usuario_loading = useSelector( state => state.entitie.usuario.loading);
+    const usuarioProfileSuccess = useSelector( state => state.entitie.usuario.success);
+    const usuarioProfileSuccessMessage = useSelector( state => state.entitie.usuario.successMessage);
+    const usuarioProfileErrorMessage = useSelector(state => state.entitie.usuario.errorMessage);
+
 
     const [ u_nome , setU_nome ] = useState('');
     const [ u_login, setU_login ] = useState('');
+    const [ u_senhaAtual, setU_senhaAtual ] = useState('');
+    const [ u_novaSenha, setU_novaSenha ] = useState('');
+    const [ u_novaSenha2, setU_novaSenha2 ] = useState('');
 
 
     const dispatch = useDispatch();
@@ -50,6 +58,16 @@ const Perfil = () => {
 
     }, [usuario_nome, usuario_login])
 
+    const updateProfile = (e) => {
+        e.preventDefault();
+
+        dispatch(editUserProfile(userId, u_nome, u_senhaAtual, u_novaSenha));
+        setU_senhaAtual('');
+        setU_novaSenha('');
+        setU_novaSenha2('');
+
+    }
+
 
     return (
         <ContentWrapper>
@@ -62,7 +80,7 @@ const Perfil = () => {
                 </Row>
                 <Row  className="justify-content-center">
 
-                    <Form className="form-frame">
+                    <Form className="form-frame" onSubmit={updateProfile}>
 
                         <h5>Informação do usuário</h5>
                         <BottomLine/>
@@ -83,18 +101,18 @@ const Perfil = () => {
                         <Form.Group controlId="senhaAtual">
                             <Form.Text style={{marginBottom: "15px"}} className="text-muted">Para alterar a senha atual, preencha todos os campos abaixo !</Form.Text>
                             <Form.Label>Senha atual</Form.Label>
-                            <Form.Control />
+                            <Form.Control type="password" value={u_senhaAtual} onChange={e => setU_senhaAtual(e.target.value)}/>
                             
                         </Form.Group>
 
                         <Form.Group controlId="senhaNova">
                             <Form.Label>Nova senha</Form.Label>
-                            <Form.Control />
+                            <Form.Control type="password" value={u_novaSenha} onChange={e => setU_novaSenha(e.target.value)}/>
                         </Form.Group>
 
                         <Form.Group controlId="SenhaNovaConfere">
                             <Form.Label>Confirme a nova senha</Form.Label>
-                            <Form.Control />
+                            <Form.Control type="password" value={u_novaSenha2} onChange={e => setU_novaSenha2(e.target.value)}/>
                         </Form.Group>
 
                         <BottomLine/>
@@ -109,7 +127,10 @@ const Perfil = () => {
 
             {usuario_loading && <SnackLoad show={usuario_loading}/>}
 
-            {usuario_error && <SnackMessage message={"Erro ao encontrar o usuário :("} color={"error"} show={usuario_error}/>}
+            {usuario_error && <SnackMessage message={usuarioProfileErrorMessage} color={"error"} show={usuario_error}/>}
+
+            {usuarioProfileSuccess && <SnackMessage message={usuarioProfileSuccessMessage} color={"success"} show={usuarioProfileSuccess}/>}
+
 
         </ContentWrapper>
     )
