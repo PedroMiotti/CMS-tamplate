@@ -78,7 +78,6 @@ const slice = createSlice({
             usuario.error = false;
             usuario.success = true;
             usuario.successMessage =  action.payload.message;
-            usuario.errorMessage =  action.payload.message;
 
 
             localStorage.removeItem("jwt")
