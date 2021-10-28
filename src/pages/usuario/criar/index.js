@@ -71,7 +71,7 @@ const CriarU = () => {
 
                     <Form className="form-frame" onSubmit={criarUsuario}>
 
-                        <h5>Informação do usuário</h5>
+                        <h5>Informaçoes do usuário</h5>
                         <BottomLine/>
                     
                         <Form.Group controlId="formBasicLogin">
